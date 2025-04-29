@@ -1,33 +1,987 @@
-index.html
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MarriageMemento - Luxury Wedding Websites</title>
-    <meta name="description" content="Exclusive, personalized wedding websites for discerning couples. Where luxury meets love in digital storytelling." />
-    <meta name="author" content="MarriageMemento" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarriageMemento - Wedding Website Maker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #e83e8c;
+            --secondary: #6f42c1;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --white: #ffffff;
+            --gold: #ffd700;
+        }
 
-    <meta property="og:title" content="MarriageMemento - Luxury Wedding Websites" />
-    <meta property="og:description" content="Exclusive, personalized wedding websites for discerning couples. Where luxury meets love in digital storytelling." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-  </head>
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Templates Section */
+        .templates {
+            background-color: var(--white);
+        }
+
+        .template-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .template-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .template-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .template-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .template-card:hover .template-img img {
+            transform: scale(1.1);
+        }
+
+        .template-info {
+            padding: 1.5rem;
+        }
+
+        .template-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .template-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .template-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .premium-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--gold);
+            color: var(--dark);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f5f5f5;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .template-preview {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .template-preview-img {
+            flex: 1;
+        }
+
+        .template-preview-img img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .template-preview-info {
+            flex: 1;
+        }
+
+        .template-preview-info h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .template-features {
+            margin: 1.5rem 0;
+        }
+
+        .template-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .template-features li i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .template-preview {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .template-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab-btn.active {
+                border-bottom: none;
+                border-left: 3px solid var(--primary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>MarriageMemento</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#" class="btn btn-outline">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Where Love Meets Technology</h1>
+                <p>Create your perfect wedding website with our elegant templates. Share your love story with family and friends in a beautiful, personalized way.</p>
+                <a href="#templates" class="btn btn-primary">Browse Templates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About MarriageMemento</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Celebrate Your Love Story</h3>
+                    <p>MarriageMemento is where love meets technology. We help couples create stunning, personalized wedding websites to celebrate their special day and share their story with the world.</p>
+                    <p>Our mission is to make wedding website creation simple, beautiful, and memorable. With our intuitive platform and designer-crafted templates, you can have a professional wedding website ready in minutes.</p>
+                    <p>Whether you're looking for a simple way to share your wedding details or want a complete digital showcase of your love story, MarriageMemento has the perfect solution for you.</p>
+                    <a href="#templates" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Happy couple">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="section templates" id="templates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beautiful Wedding Templates</h2>
+            </div>
+            <div class="template-tabs">
+                <button class="tab-btn active" data-tab="all">All Templates</button>
+                <button class="tab-btn" data-tab="basic">Basic</button>
+                <button class="tab-btn" data-tab="premium">Premium</button>
+            </div>
+            <div class="template-grid">
+                <!-- Template 1 -->
+                <div class="template-card" data-category="basic">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Classic Romance Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Classic Romance</h3>
+                        <p>Timeless elegance for your special day with soft colors and delicate details.</p>
+                        <div class="template-price">Free</div>
+                        <button class="btn btn-primary preview-btn" data-template="1">Preview</button>
+                    </div>
+                </div>
+
+                <!-- Template 2 -->
+                <div class="template-card" data-category="premium">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Modern Elegance Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Modern Elegance <span class="premium-badge">Premium</span></h3>
+                        <p>Sleek and sophisticated design with customizable layouts and animations.</p>
+                        <div class="template-price">$29.99</div>
+                        <button class="btn btn-primary preview-btn" data-template="2">Preview</button>
+                    </div>
+                </div>
+
+                <!-- Template 3 -->
+                <div class="template-card" data-category="basic">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Rustic Charm Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Rustic Charm</h3>
+                        <p>Warm and inviting design perfect for barn weddings or outdoor celebrations.</p>
+                        <div class="template-price">Free</div>
+                        <button class="btn btn-primary preview-btn" data-template="3">Preview</button>
+                    </div>
+                </div>
+
+                <!-- Template 4 -->
+                <div class="template-card" data-category="premium">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Luxury Affair Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Luxury Affair <span class="premium-badge">Premium</span></h3>
+                        <p>Opulent design with gold accents and premium features for a lavish celebration.</p>
+                        <div class="template-price">$49.99</div>
+                        <button class="btn btn-primary preview-btn" data-template="4">Preview</button>
+                    </div>
+                </div>
+
+                <!-- Template 5 -->
+                <div class="template-card" data-category="basic">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Minimalist Love Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Minimalist Love</h3>
+                        <p>Clean, simple design that puts your photos and story front and center.</p>
+                        <div class="template-price">Free</div>
+                        <button class="btn btn-primary preview-btn" data-template="5">Preview</button>
+                    </div>
+                </div>
+
+                <!-- Template 6 -->
+                <div class="template-card" data-category="premium">
+                    <div class="template-img">
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Destination Bliss Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Destination Bliss <span class="premium-badge">Premium</span></h3>
+                        <p>Perfect for destination weddings with travel info and interactive maps.</p>
+                        <div class="template-price">$39.99</div>
+                        <button class="btn btn-primary preview-btn" data-template="6">Preview</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Amazing Features</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>All our templates are fully responsive and look great on any device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Custom Colors</h3>
+                    <p>Match your wedding theme with our easy color customization tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Photo Galleries</h3>
+                    <p>Showcase your engagement photos and wedding preparations beautifully.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>RSVP Management</h3>
+                    <p>Easily track guest responses and meal preferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Gift Registry</h3>
+                    <p>Link to your favorite registries or create a cash fund.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Interactive Maps</h3>
+                    <p>Help guests find your venues with embedded maps and directions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Create Your Wedding Website?</h2>
+            <p>Join thousands of couples who have shared their special day with MarriageMemento. Get started in minutes with our easy-to-use platform.</p>
+            <a href="#templates" class="btn btn-outline">Choose Your Template</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MarriageMemento</h3>
+                    <p>Where love meets technology. Beautiful wedding websites made simple.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#templates">Templates</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get wedding tips and special offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MarriageMemento. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Template Preview Modal -->
+    <div class="modal" id="templateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTemplateTitle">Template Preview</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="template-preview">
+                    <div class="template-preview-img">
+                        <img src="" alt="Template Preview" id="modalTemplateImage">
+                    </div>
+                    <div class="template-preview-info">
+                        <h4 id="modalTemplateName">Template Name</h4>
+                        <div class="template-price" id="modalTemplatePrice">$0.00</div>
+                        <ul class="template-features" id="modalTemplateFeatures">
+                            <!-- Features will be added by JavaScript -->
+                        </ul>
+                        <p id="modalTemplateDescription">Template description goes here.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal">Close</button>
+                <button class="btn btn-primary" id="useTemplateBtn">Use This Template</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Template data
+        const templates = {
+            1: {
+                name: "Classic Romance",
+                price: "Free",
+                image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Timeless elegance for your special day with soft colors and delicate details.",
+                features: [
+                    "Responsive design for all devices",
+                    "Photo gallery with lightbox",
+                    "RSVP form with email notifications",
+                    "Custom color palette",
+                    "Countdown timer"
+                ],
+                category: "basic"
+            },
+            2: {
+                name: "Modern Elegance",
+                price: "$29.99",
+                image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                description: "Sleek and sophisticated design with customizable layouts and animations.",
+                features: [
+                    "All basic features plus",
+                    "Parallax scrolling effects",
+                    "Animated transitions",
+                    "Premium font selection",
+                    "Video background option",
+                    "Advanced RSVP management"
+                ],
+                category: "premium"
+            },
+            3: {
+                name: "Rustic Charm",
+                price: "Free",
+                image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Warm and inviting design perfect for barn weddings or outdoor celebrations.",
+                features: [
+                    "Responsive design for all devices",
+                    "Wood and floral design elements",
+                    "Photo gallery with lightbox",
+                    "RSVP form with email notifications",
+                    "Custom color palette"
+                ],
+                category: "basic"
+            },
+            4: {
+                name: "Luxury Affair",
+                price: "$49.99",
+                image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                description: "Opulent design with gold accents and premium features for a lavish celebration.",
+                features: [
+                    "All basic features plus",
+                    "Gold foil design elements",
+                    "Full-screen image slideshow",
+                    "Guest book with photo uploads",
+                    "Custom domain support",
+                    "Priority customer support"
+                ],
+                category: "premium"
+            },
+            5: {
+                name: "Minimalist Love",
+                price: "Free",
+                image: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                description: "Clean, simple design that puts your photos and story front and center.",
+                features: [
+                    "Responsive design for all devices",
+                    "Minimalist layout",
+                    "Photo gallery with lightbox",
+                    "Essential information sections",
+                    "Custom color palette"
+                ],
+                category: "basic"
+            },
+            6: {
+                name: "Destination Bliss",
+                price: "$39.99",
+                image: "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                description: "Perfect for destination weddings with travel info and interactive maps.",
+                features: [
+                    "All basic features plus",
+                    "Interactive maps for venues",
+                    "Travel information section",
+                    "Accommodation recommendations",
+                    "Local attractions guide",
+                    "Multi-language support"
+                ],
+                category: "premium"
+            }
+        };
+
+        // DOM Elements
+        const modal = document.getElementById('templateModal');
+        const previewBtns = document.querySelectorAll('.preview-btn');
+        const closeModal = document.querySelectorAll('.close-modal');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const templateCards = document.querySelectorAll('.template-card');
+        const useTemplateBtn = document.getElementById('useTemplateBtn');
+
+        // Template filtering
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('
