@@ -3,561 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Website Templates</title>
+    <title>Memento - Wedding Invitation</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
-        
         body {
-            background-color: #f9f7f7;
+            font-family: Arial, sans-serif;
+            background-color: #fdfdff;
             color: #333;
-            line-height: 1.6;
         }
-        
         header {
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #ff758c;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background: #ff7eb3;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin: 3rem 0 2rem;
-            color: #ff758c;
-        }
-        
-        .templates {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .template-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            transition: transform 0.3s;
-        }
-        
-        .template-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .template-img {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .template-content {
-            padding: 1.5rem;
-        }
-        
-        .template-content h3 {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        
-        .template-content p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .template-badge {
-            display: inline-block;
-            background: #f0f0f0;
-            color: #666;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .premium-badge {
-            background: #ffd700;
-            color: #333;
-        }
-        
-        .features {
-            margin: 1rem 0;
-        }
-        
-        .features li {
-            margin-bottom: 0.5rem;
-            list-style-type: none;
-        }
-        
-        .features li:before {
-            content: "✓";
-            color: #ff758c;
-            margin-right: 0.5rem;
-        }
-        
-        .contact {
-            background: #f0f0f0;
-            padding: 3rem 0;
+            background: #f8d7e1;
+            padding: 40px 20px;
             text-align: center;
         }
-        
-        .contact h2 {
-            margin-bottom: 2rem;
+        header h1 {
+            font-size: 36px;
+            color: #3c3c3c;
         }
-        
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        
-        .contact-item i {
-            font-size: 2rem;
-            color: #ff758c;
-            margin-bottom: 1rem;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        
-        /* Preview Section Styles */
-        .preview-section {
-            background: linear-gradient(to right, #f9f7f7, #f0f0f0);
-            padding: 3rem 0;
-        }
-        
-        .preview-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .preview-tabs {
-            display: flex;
-            margin-bottom: 2rem;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .preview-tab {
-            padding: 1rem 2rem;
-            background: #f0f0f0;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        
-        .preview-tab.active {
-            background: #ff758c;
-            color: white;
-        }
-        
-        .preview-content {
-            width: 100%;
-            max-width: 900px;
-            height: 500px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .preview-frame {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .hero-btn {
+            background-color: #f9a5d1;
+            padding: 10px 20px;
             border: none;
-            display: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
         }
-        
-        .preview-frame.active {
-            display: block;
-        }
-        
-        .preview-placeholder {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        section {
+            padding: 40px 20px;
             text-align: center;
-            padding: 2rem;
         }
-        
-        .preview-placeholder h3 {
-            margin-bottom: 1rem;
-            color: #333;
+        .about, .features, .contact {
+            background: #fff;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 800px;
         }
-        
-        .preview-placeholder p {
-            color: #666;
-            margin-bottom: 2rem;
+        .features .feature-card {
+            display: inline-block;
+            margin: 20px;
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
-        .preview-img {
-            width: 80%;
-            height: 60%;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
+        .feature-card h3 {
+            font-size: 24px;
+            color: #f76b8a;
         }
-        
+        .feature-card p {
+            font-size: 16px;
+        }
+        footer {
+            background: #f8d7e1;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Responsive design */
         @media (max-width: 768px) {
-            .templates {
-                flex-direction: column;
-                align-items: center;
+            header h1 {
+                font-size: 28px;
             }
-            
-            .template-card {
+            .feature-card {
                 width: 100%;
-                max-width: 350px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .preview-content {
-                height: 400px;
-            }
-            
-            .preview-tabs {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
+                margin-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="container">
-            <h1>Wedding Website Templates</h1>
-            <p>Create beautiful memories that last forever</p>
-        </div>
+        <h1>Memento</h1>
+        <p>Your digital wedding invitation</p>
+        <button class="hero-btn">Create Now</button>
     </header>
-    
-    <section class="hero container">
-        <h1>Beautiful Wedding Website Templates</h1>
-        <p>Professional designs to showcase your special day</p>
-        <a href="#templates" class="btn">View Our Templates</a>
+
+    <section class="about">
+        <h2>About Memento</h2>
+        <p>Memento is a simple and eco-friendly way to send digital wedding invitations. Stay connected and save the planet!</p>
     </section>
-    
-    <section id="preview" class="preview-section">
-        <div class="container">
-            <h2 class="section-title">Live Template Preview</h2>
-            <div class="preview-container">
-                <div class="preview-tabs">
-                    <div class="preview-tab active" onclick="switchPreview('basic-simple')">Basic - Simple Elegance</div>
-                    <div class="preview-tab" onclick="switchPreview('basic-rustic')">Basic - Rustic Charm</div>
-                    <div class="preview-tab" onclick="switchPreview('premium-royal')">Premium - Royal Celebration</div>
-                    <div class="preview-tab" onclick="switchPreview('premium-classic')">Premium - Classic Romance</div>
-                </div>
-                
-                <div class="preview-content">
-                    <!-- Basic Simple Template Preview -->
-                    <div class="preview-frame active" id="basic-simple">
-                        <div class="preview-placeholder">
-                            <h3>Simple Elegance Template</h3>
-                            <div class="preview-img">
-                                <img src="/api/placeholder/600/300" alt="Simple Elegance Template Preview">
-                            </div>
-                            <p>A clean and simple design perfect for showcasing your wedding photos and venue details.</p>
-                            <a href="#" class="btn">Select This Template</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Basic Rustic Template Preview -->
-                    <div class="preview-frame" id="basic-rustic">
-                        <div class="preview-placeholder">
-                            <h3>Rustic Charm Template</h3>
-                            <div class="preview-img">
-                                <img src="/api/placeholder/600/300" alt="Rustic Charm Template Preview">
-                            </div>
-                            <p>A warm, rustic design ideal for countryside weddings and outdoor celebrations.</p>
-                            <a href="#" class="btn">Select This Template</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Premium Royal Template Preview -->
-                    <div class="preview-frame" id="premium-royal">
-                        <div class="preview-placeholder">
-                            <h3>Royal Celebration Template</h3>
-                            <div class="preview-img">
-                                <img src="/api/placeholder/600/300" alt="Royal Celebration Template Preview">
-                            </div>
-                            <p>An elegant premium design with multiple event pages for Haldi, Sangeet, Wedding and Reception.</p>
-                            <a href="#" class="btn">Select This Template</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Premium Classic Template Preview -->
-                    <div class="preview-frame" id="premium-classic">
-                        <div class="preview-placeholder">
-                            <h3>Classic Romance Template</h3>
-                            <div class="preview-img">
-                                <img src="/api/placeholder/600/300" alt="Classic Romance Template Preview">
-                            </div>
-                            <p>A timeless premium design with beautiful animations and comprehensive event coverage.</p>
-                            <a href="#" class="btn">Select This Template</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <section class="features">
+        <h2>Our Features</h2>
+        <div class="feature-card">
+            <h3>Unique Wedding Invites</h3>
+            <p>Personalized and beautiful invitations designed just for you.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Eco-friendly & Easy Sharing</h3>
+            <p>Share your invitation via email or social media with just a click.</p>
         </div>
     </section>
-    
-    <section id="templates" class="container">
-        <h2 class="section-title">Our Templates</h2>
-        
-        <div class="templates">
-            <!-- Basic Template 1 -->
-            <div class="template-card">
-                <div class="template-img">
-                    <img src="/api/placeholder/350/200" alt="Basic Wedding Template">
-                </div>
-                <div class="template-content">
-                    <span class="template-badge">Basic</span>
-                    <h3>Simple Elegance</h3>
-                    <p>A clean and simple design to showcase your special day.</p>
-                    <ul class="features">
-                        <li>Photo gallery</li>
-                        <li>Wedding venue details</li>
-                        <li>RSVP form</li>
-                        <li>Mobile responsive</li>
-                    </ul>
-                    <a href="#preview" class="btn" onclick="switchPreview('basic-simple')">Preview</a>
-                </div>
-            </div>
-            
-            <!-- Basic Template 2 -->
-            <div class="template-card">
-                <div class="template-img">
-                    <img src="/api/placeholder/350/200" alt="Basic Wedding Template">
-                </div>
-                <div class="template-content">
-                    <span class="template-badge">Basic</span>
-                    <h3>Rustic Charm</h3>
-                    <p>A warm, rustic design perfect for countryside weddings.</p>
-                    <ul class="features">
-                        <li>Photo gallery</li>
-                        <li>Wedding venue details</li>
-                        <li>Countdown timer</li>
-                        <li>Mobile responsive</li>
-                    </ul>
-                    <a href="#preview" class="btn" onclick="switchPreview('basic-rustic')">Preview</a>
-                </div>
-            </div>
-            
-            <!-- Premium Template 1 -->
-            <div class="template-card">
-                <div class="template-img">
-                    <img src="/api/placeholder/350/200" alt="Premium Wedding Template">
-                </div>
-                <div class="template-content">
-                    <span class="template-badge premium-badge">Premium</span>
-                    <h3>Royal Celebration</h3>
-                    <p>An elegant design with sophisticated animations.</p>
-                    <ul class="features">
-                        <li>Multi-event timeline (Haldi, Sangeet, Reception)</li>
-                        <li>Photo & video galleries</li>
-                        <li>Custom RSVP with meal preferences</li>
-                        <li>Interactive venue maps</li>
-                        <li>Gift registry integration</li>
-                    </ul>
-                    <a href="#preview" class="btn" onclick="switchPreview('premium-royal')">Preview</a>
-                </div>
-            </div>
-            
-            <!-- Premium Template 2 -->
-            <div class="template-card">
-                <div class="template-img">
-                    <img src="/api/placeholder/350/200" alt="Premium Wedding Template">
-                </div>
-                <div class="template-content">
-                    <span class="template-badge premium-badge">Premium</span>
-                    <h3>Classic Romance</h3>
-                    <p>A timeless design with beautiful animations and features.</p>
-                    <ul class="features">
-                        <li>Complete wedding event timeline</li>
-                        <li>Professional photo galleries</li>
-                        <li>Custom love story section</li>
-                        <li>Online RSVP system</li>
-                        <li>Travel & accommodation information</li>
-                    </ul>
-                    <a href="#preview" class="btn" onclick="switchPreview('premium-classic')">Preview</a>
-                </div>
-            </div>
-        </div>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Feel free to get in touch for any queries!</p>
+        <p>Email: <a href="mailto:info@memento.com">info@memento.com</a></p>
+        <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
     </section>
-    
-    <section class="container">
-        <h2 class="section-title">Basic vs Premium</h2>
-        <div class="templates">
-            <div class="template-card">
-                <div class="template-content">
-                    <span class="template-badge">Basic</span>
-                    <h3>Basic Package Features</h3>
-                    <ul class="features">
-                        <li>Simple, elegant design</li>
-                        <li>Photo gallery</li>
-                        <li>Wedding venue information</li>
-                        <li>Date and time details</li>
-                        <li>Mobile responsive</li>
-                        <li>Basic customization options</li>
-                    </ul>
-                    <a href="#" class="btn">Choose Basic</a>
-                </div>
-            </div>
-            
-            <div class="template-card">
-                <div class="template-content">
-                    <span class="template-badge premium-badge">Premium</span>
-                    <h3>Premium Package Features</h3>
-                    <ul class="features">
-                        <li>All Basic features included</li>
-                        <li>Multiple event pages (Haldi, Sangeet, Reception)</li>
-                        <li>Advanced photo & video galleries</li>
-                        <li>Custom animations and effects</li>
-                        <li>Online RSVP system</li>
-                        <li>Countdown timer</li>
-                        <li>Guest book functionality</li>
-                        <li>Travel & accommodation information</li>
-                        <li>Live support</li>
-                    </ul>
-                    <a href="#" class="btn">Choose Premium</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i>📱</i>
-                    <h3>Phone</h3>
-                    <p>+91 7989265399</p>
-                </div>
-                
-                <div class="contact-item">
-                    <i>✉️</i>
-                    <h3>Email</h3>
-                    <p>shashinarmala29@gmail.com</p>
-                </div>
-            </div>
-            
-            <a href="mailto:shashinarmala29@gmail.com" class="btn">Send Email</a>
-        </div>
-    </section>
-    
+
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Wedding Website Templates. All rights reserved.</p>
-        </div>
+        <p>&copy; 2025 Memento Weddings</p>
     </footer>
 
-    <script>
-        function switchPreview(id) {
-            // Hide all preview frames
-            const frames = document.getElementsByClassName('preview-frame');
-            for (let i = 0; i < frames.length; i++) {
-                frames[i].classList.remove('active');
-            }
-            
-            // Show selected preview frame
-            document.getElementById(id).classList.add('active');
-            
-            // Update tab styles
-            const tabs = document.getElementsByClassName('preview-tab');
-            for (let i = 0; i < tabs.length; i++) {
-                tabs[i].classList.remove('active');
-            }
-            
-            // Find and activate the clicked tab
-            const tabText = {
-                'basic-simple': 'Basic - Simple Elegance',
-                'basic-rustic': 'Basic - Rustic Charm',
-                'premium-royal': 'Premium - Royal Celebration',
-                'premium-classic': 'Premium - Classic Romance'
-            };
-            
-            for (let i = 0; i < tabs.length; i++) {
-                if (tabs[i].textContent === tabText[id]) {
-                    tabs[i].classList.add('active');
-                }
-            }
-            
-            // Scroll to preview section
-            document.getElementById('preview').scrollIntoView({behavior: 'smooth'});
-        }
-    </script>
 </body>
 </html>
